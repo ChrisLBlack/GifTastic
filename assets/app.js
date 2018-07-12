@@ -6,33 +6,24 @@ $(document).ready(function () {
 
     // this loop appends the buttons to the page on load
     for (j = 0; j < games.length; j++) {
-        $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}"</button>`)
+        $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}</button>`)
     }
 
-    $("button").on("click", function(){
+    $("button").click( function(){
+        console.log($(this).data('search'));
 
-        for (g = 0; g < games.length; g++){
-            var gameURL = `http://api.giphy.com/v1/gifs/search?q=${games[g]}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
-            console.log(gameURL);
-            $.get(gameURL).then(function (arr){
-                for (u = 0; u < arr.length; u++){
-                $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
-                }
-            })
-        }
+        // for (g = 0; g < games.length; g++){
+        //     var gameURL = $("data-search").val();
+        //     console.log(gameURL);
+            // $.get(gameURL).then(function (arr){
+            //     for (u = 0; u < arr.length; u++){
+            //     $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
+            //     }
+            // })
+        // }
 
     });
 
-    // $.get(buttonURL).then(function(arr){
-        // var buttonURL =`http://api.giphy.com/v1/gifs/search?q=${games[0]}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
-    //     for (g = 0; g < arr.data.length; g++) {
-    //         $("#gifs").prepend(`<p><img src="${arr.data[g].images.fixed_height.url}"></br>Rating: "${arr.data[g].rating}"</p>`)
-    //     };
-    //     // if ()
-    //     $("#buttons").append(`<button type="button" data-search="${games[0]}" class="btn btn-info float-left">${games[0]}</button>`)
-
-
-    // })
 
     //this function adds gifs to the page when the user enters them in the input field
     $("#gif-button").on("click", function () {
