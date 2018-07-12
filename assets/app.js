@@ -2,25 +2,23 @@ $(document).ready(function () {
 
 
     // array that holds all of the string values of the buttons
-    var games = ["PUBG", "Mario Party", "OverWatch", "Mario Kart", "Smash Bros", "Call of Duty", "Halo", "GTA: 5"];
+    var games = ["PUBG", "MarioParty", "OverWatch", "MarioKart", "SmashBros", "CallofDuty", "Halo", "GTA:5"];
 
     // this loop appends the buttons to the page on load
     for (j = 0; j < games.length; j++) {
         $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}</button>`)
     }
 
-    $("button").click( function(){
-        console.log($(this).data('search'));
+    $("button").click(function(){
+        gameURL = `http://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
+        console.log(gameURL);
 
-        // for (g = 0; g < games.length; g++){
-        //     var gameURL = $("data-search").val();
-        //     console.log(gameURL);
-            // $.get(gameURL).then(function (arr){
-            //     for (u = 0; u < arr.length; u++){
-            //     $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
-            //     }
-            // })
-        // }
+            $.get(gameURL).then(function (arr){
+                for (u = 0; u < arr.data.length; u++){
+                $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
+                }
+            })
+        
 
     });
 
