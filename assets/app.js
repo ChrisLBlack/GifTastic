@@ -9,7 +9,7 @@ $(document).ready(function () {
         $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}</button>`)
     }
 
-    $("button").click(function(){
+    $(document).on('click', 'button', function(){
         gameURL = `http://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
         console.log(gameURL);
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
 
     //this function adds gifs to the page when the user enters them in the input field
-    $("#gif-button").on("click", function () {
+    $(document).on("click","#gif-button", function () {
         //input from the user
         var submit = $("input").val().trim();
         //building api link
@@ -41,9 +41,9 @@ $(document).ready(function () {
         })
 
         games.push(submit);
-        $("input").val("");
+        $('input').val("")
 
-    })
+    });
 
 
 });
