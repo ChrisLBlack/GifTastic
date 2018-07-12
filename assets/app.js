@@ -9,6 +9,20 @@ $(document).ready(function () {
         $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}"</button>`)
     }
 
+    $("button").on("click", function(){
+
+        for (g = 0; g < games.length; g++){
+            var gameURL = `http://api.giphy.com/v1/gifs/search?q=${games[g]}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
+            console.log(gameURL);
+            $.get(gameURL).then(function (arr){
+                for (u = 0; u < arr.length; u++){
+                $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
+                }
+            })
+        }
+
+    });
+
     // $.get(buttonURL).then(function(arr){
         // var buttonURL =`http://api.giphy.com/v1/gifs/search?q=${games[0]}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
     //     for (g = 0; g < arr.data.length; g++) {
