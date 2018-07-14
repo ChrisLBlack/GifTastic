@@ -8,12 +8,12 @@ $(document).ready(function () {
     for (j = 0; j < topics.length; j++) {
         $("#buttons").append(`<button type="button" data-search="${topics[j]}" class="btn btn-info float-left doIt">${topics[j]}</button>`)
     }
-
+    //if gif button already in the array is clicked, this adds gifs to the page
     $(document).on('click', '.doIt', function(event){
         event.preventDefault();
         gameURL = `http://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
 
-
+            //function to get the api and prepend gifs to the page
             $.get(gameURL).then(function (arr){
                 console.log(arr.data)
                 for (u = 0; u < arr.data.length; u++){
@@ -41,16 +41,17 @@ $(document).ready(function () {
                 data-still="${response.data[i].images.fixed_height_still.url}" data-animate="${response.data[i].images.fixed_height.url}"
                 data-still="still" class="giffyBoi"></br>Rating: "${response.data[i].rating}"</p>`)
             };
-
+            //appends gives the new button to the page
             $("#buttons").append(`<button type="button" data-search="${submit}" class="btn btn-info float-left doIt">${submit}</button>`)
     
         })
-
+        //pushes user input to the array
         topics.push(submit);
         $('input').val("");
 
     });
 
+    //event listener to make gifs move and stop
     $(document).on("click", ".giffyBoi", function() {
         
         var state = $(this).attr("data-state");
