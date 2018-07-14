@@ -6,10 +6,11 @@ $(document).ready(function () {
 
     // this loop appends the buttons to the page on load
     for (j = 0; j < games.length; j++) {
-        $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left">${games[j]}</button>`)
+        $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left doIt">${games[j]}</button>`)
     }
 
-    $(document).on('click', 'button', function(){
+    $(document).on('click', '.doIt', function(event){
+        event.preventDefault();
         gameURL = `http://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
         console.log(gameURL);
 
@@ -18,13 +19,13 @@ $(document).ready(function () {
                 $("#gifs").prepend(`<p><img src="${arr.data[u].images.fixed_height.url}"></br>Rating: "${arr.data[u].rating}"</p>`)
                 }
             })
-        
 
     });
 
 
     //this function adds gifs to the page when the user enters them in the input field
-    $(document).on("click","#gif-button", function () {
+    $(document).on("click","#gif-button", function (event) {
+        event.preventDefault();
         //input from the user
         var submit = $("input").val().trim();
         //building api link
@@ -36,12 +37,12 @@ $(document).ready(function () {
                 $("#gifs").prepend(`<p><img src="${response.data[i].images.fixed_height.url}"></br>Rating: "${response.data[i].rating}"</p>`)
             };
 
-            $("#buttons").append(`<button type="button" data-search="${submit}" class="btn btn-info float-left">${submit}</button>`)
+            $("#buttons").append(`<button type="button" data-search="${submit}" class="btn btn-info float-left doIt">${submit}</button>`)
     
         })
 
         games.push(submit);
-        $('input').val("")
+        $('input').val("");
 
     });
 
