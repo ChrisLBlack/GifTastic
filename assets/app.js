@@ -2,11 +2,11 @@ $(document).ready(function () {
 
 
     // array that holds all of the string values of the buttons
-    var games = ["PUBG", "MarioParty", "OverWatch", "MarioKart", "SmashBros", "CallofDuty", "Halo", "GTA:5"];
+    var topics = ["PUBG", "MarioParty", "OverWatch", "MarioKart", "SmashBros", "CallofDuty", "Halo", "GTA:5"];
 
     // this loop appends the buttons to the page on load
-    for (j = 0; j < games.length; j++) {
-        $("#buttons").append(`<button type="button" data-search="${games[j]}" class="btn btn-info float-left doIt">${games[j]}</button>`)
+    for (j = 0; j < topics.length; j++) {
+        $("#buttons").append(`<button type="button" data-search="${topics[j]}" class="btn btn-info float-left doIt">${topics[j]}</button>`)
     }
 
     $(document).on('click', '.doIt', function(event){
@@ -41,7 +41,7 @@ $(document).ready(function () {
     
         })
 
-        games.push(submit);
+        topics.push(submit);
         $('input').val("");
 
     });
