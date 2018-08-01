@@ -32,7 +32,7 @@ $(document).ready(function () {
         //input from the user
         var submit = $("input").val().trim();
         //building api link
-        var queryURL = `http://api.giphy.com/v1/gifs/search?q=${submit}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
+        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${submit}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
 
         //sends api link and appends to page
         $.get(queryURL).then(function (response) {
