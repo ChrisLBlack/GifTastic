@@ -11,7 +11,7 @@ $(document).ready(function () {
     //if gif button already in the array is clicked, this adds gifs to the page
     $(document).on('click', '.doIt', function(event){
         event.preventDefault();
-        gameURL = `http://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
+        gameURL = `https://api.giphy.com/v1/gifs/search?q=${$(this).data('search')}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
 
             //function to get the api and prepend gifs to the page
             $.get(gameURL).then(function (arr){
@@ -32,7 +32,7 @@ $(document).ready(function () {
         //input from the user
         var submit = $("input").val().trim();
         //building api link
-        var queryURL = `http://api.giphy.com/v1/gifs/search?q=${submit}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
+        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${submit}&api_key=Onu3hiVRvdlarqe3KvT3PuRCooAJ9gBo&limit=10`
 
         //sends api link and appends to page
         $.get(queryURL).then(function (response) {
